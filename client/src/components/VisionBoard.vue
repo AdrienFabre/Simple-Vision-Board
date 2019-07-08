@@ -3,7 +3,7 @@
     <h1>{{ title }}</h1>
     <div class="grid-container">
       <div v-for="board in boards" :key="board._id">
-        <div class="grid-item">
+        <div :id="board" class="grid-item">
           <ToDoList :title="board" />
         </div>
       </div>
@@ -14,7 +14,7 @@
 <script>
 import ToDoList from "@/components/ToDoList.vue";
 export default {
-  name: "visionBoard",
+  name: "VisionBoard",
   components: { ToDoList },
   data() {
     return {
@@ -34,8 +34,6 @@ export default {
   }
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .grid-container {
   display: grid;

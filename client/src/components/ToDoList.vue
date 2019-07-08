@@ -1,19 +1,26 @@
 <template lang="html">
-  <div id='wrapper'>
-    <h3>{{ this.title }}</h3>
+  <div id="wrapper">
+    <h3>{{ title }}</h3>
     <ul>
-      <form v-on:submit='addTodo($event)' class='add-todo'>
-        <input type='text' placeholder='Enter new goal' v-model='newTodo.text'/>
-        <input v-on:keyup.enter="submit" type='submit' :disabled="newTodo.text.length <= 2" value='+'/>
+      <form class="add-todo" @submit="addTodo($event)">
+        <input
+          v-model="newTodo.text"
+          type="text"
+          placeholder="Enter new goal"
+        />
+        <input
+          :disabled="newTodo.text.length <= 2 || toDosFromThisList.length >= 3"
+          type="submit"
+          value="+"
+          @keyup.enter="submit"
+        />
       </form>
-      
-      <li v-for='todo in this.toDosFromThisList' :key='todo._id'>
-        <p>{{todo.title.text}}</p>
-        <button class='button' @click='deleteTodo(todo._id)'>x</button>
-      </li>
-      
-    </ul>
 
+      <li v-for="todo in toDosFromThisList" :key="todo._id">
+        <p>{{ todo.title.text }}</p>
+        <button class="button" @click="deleteTodo(todo._id)">x</button>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -21,7 +28,7 @@
 import ToDoAPI from "@/services/ToDoAPI.js";
 export default {
   props: {
-    title: String
+    title: { type: String, default: "" }
   },
   data() {
     return {
@@ -41,20 +48,19 @@ export default {
         }
       });
     }
-  }, // contains only current ToDoList
+  },
   mounted() {
     this.loadTodos();
   },
   methods: {
     async addTodo(evt) {
-      evt.preventDefault(); // prevents the form's default action from redirecting the page
+      evt.preventDefault();
       const response = await ToDoAPI.addTodo(this.newTodo);
       this.todos.push(response.data);
-      this.newTodo.text = ""; // clear the input field
+      this.newTodo.text = "";
     },
     deleteTodo(todoID) {
       ToDoAPI.deleteTodo(todoID);
-      // remove the array element with the matching id
       this.todos = this.todos.filter(function(obj) {
         return obj._id !== todoID;
       });

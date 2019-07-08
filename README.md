@@ -66,7 +66,7 @@ npx cypress open
 
 ## Deployment
 
-Follow the instructions here: https://www.youtube.com/watch?v=HqThxPmBGlI
+On the client side, follow the instructions here: https://www.youtube.com/watch?v=HqThxPmBGlI
 
 ## User stories
 
@@ -84,4 +84,12 @@ I want to be able to add my goals on the vision board.
 As a user,
 So I can change my mind about my life goals,
 I want to be able to remove goals on the vision board.
+```
+
+### Edge cases
+
+```md
+I can not insert a goal shorter than 3 characters long.
+I can not have more than 3 goals per categoty.
+
 ```

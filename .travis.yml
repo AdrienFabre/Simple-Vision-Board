@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - "10.16.0"
+  - "node"
+
+script:
+- cd server
+- npm install
+- cd ..
+- cd client
+- npm install -g firebase-tools
+- $(npm bin)/cypress run --record
+
+after_success: 
+- firebase deploy --token $FIREBASE_TOKEN
