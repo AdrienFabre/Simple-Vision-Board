@@ -8,9 +8,15 @@ install:
 - cd ..
 - cd client
 - npm install -g firebase-tools
+- cd ..
 
 script:
-- npx cypress open
+- cd server
+- npm start
+- cd ..
+- cd client
+- npm start
+- npx cypress run
 
 after_success: 
 - firebase deploy --token $FIREBASE_TOKEN
