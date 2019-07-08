@@ -2,8 +2,6 @@
 
 The simple vision board is a tool to help you design your life.
 
-Application deployed here: https://simple-vision-board.web.app/
-
 This projects was created with:
 
 - Firebase hosting
@@ -12,6 +10,15 @@ This projects was created with:
 - Node
 - Jest
 - MongoDB Atlas
+
+## Screenshots
+
+Website usage
+![website picture](images/WebsitePicture.png)
+
+Cypress tests
+![cypress picture](images/CypressPicture.png)
+
 
 ## Installation
 
