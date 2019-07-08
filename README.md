@@ -2,7 +2,7 @@
 
 The simple vision board is a tool to help you design your life.
 
-Application deployed here: https://simple-vision-board.firebaseapp.com/
+Application deployed here: https://simple-vision-board.web.app/
 
 This projects was created with:
 

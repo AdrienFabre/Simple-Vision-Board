@@ -128,7 +128,7 @@ input[type="text"] {
   background-color: #00a8ff;
   color: white;
   font-size: 100%;
-  width: 90%;
+  width: 80%;
   border-radius: 3px;
 }
 ::placeholder {
